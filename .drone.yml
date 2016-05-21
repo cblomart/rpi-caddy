@@ -1,0 +1,18 @@
+build:
+  image: cblomart/rpi-basebuild
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  commands:
+    - GOOS=linux GOARCH=arm GOARM=5 go get -ldflags '-s -w -extldflags "-static"' -a github.com/mholt/caddy
+    - cp /root/go/bin/caddy ./
+publish:
+  docker:
+    username: cblomart
+    password: $$DOCKERHUB_PASS
+    email: cblomart@gmail.com
+    repo: cblomart/rpi-caddy
+    insecure: true
+    tag:
+       - $$BRANCH
+       - $$COMMIT
+       - latest
