@@ -4,6 +4,7 @@ build:
     - /var/run/docker.sock:/var/run/docker.sock
   commands:
     - GOOS=linux GOARCH=arm GOARM=5 go get -ldflags '-s -w -extldflags "-static"' -a github.com/mholt/caddy
+    - echo $PATH
     - cat /etc/profile
     - cp /root/go/bin/caddy ./
 publish:
