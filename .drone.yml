@@ -1,7 +1,7 @@
 build:
   image: cblomart/rpi-basebuild
   commands:
-    - GOOS=linux GOARCH=arm GOARM=5 go get -ldflags '-s -w -extldflags "-static"' -a github.com/mholt/caddy
+    - CC=musl-gcc CFLAGS="-march=armv6 -O3 -marm -mfpu=vfp -mfloat-abi=hard -O3" GOOS=linux GOARCH=arm GOARM=5 go get -ldflags '-s -w -extldflags "-static"' -a github.com/mholt/caddy
     - cp $(which caddy) ./
 publish:
   docker:
