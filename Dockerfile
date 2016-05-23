@@ -1,4 +1,4 @@
-FROM scratch
+FROM resin/rpi-raspbian:jessie
 MAINTAINER Cédric Blomart <cblomart@gmail.com>
 
 EXPOSE 80 443
@@ -6,7 +6,7 @@ EXPOSE 80 443
 ADD ./Caddyfile /etc/Caddyfile
 ADD ./index.html /var/http/index.html
 
-ADD ./caddy /bin/caddy
+ADD ./caddy /usr/local/bin/caddy
 
-ENTRYPOINT [ "/bin/caddy" ]
+ENTRYPOINT [ "/usr/local/bin/caddy" ]
 CMD [ "--conf", "/etc/Caddyfile" ]
