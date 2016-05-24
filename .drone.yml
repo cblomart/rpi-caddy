@@ -1,7 +1,7 @@
 build:
   image: cblomart/rpi-basebuild
   commands:
-    - CC=musl-gcc CCGLAGS="-static" GOOS=linux GOARCH=arm GOARM=5 go build -ldflags '-linkmode external -s -w -extldflags "-static"' -a  github.com/mholt/caddy
+    - CC=musl-gcc CCGLAGS="-static" GOOS=linux GOARCH=arm GOARM=5 go get -ldflags '-linkmode external -s -w -extldflags "-static"' -a  github.com/mholt/caddy
     - cp $(which caddy) ./
 publish:
   docker:
