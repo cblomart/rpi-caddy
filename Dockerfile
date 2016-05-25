@@ -7,7 +7,7 @@ ADD ./Caddyfile /etc/Caddyfile
 ADD ./index.html /var/http/index.html
 ADD ./ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
-ADD ./caddy /usr/local/bin/caddy
+ADD ./caddy /
 
-ENTRYPOINT [ "/usr/local/bin/caddy" ]
+ENTRYPOINT [ "/caddy" ]
 CMD [ "--conf", "/etc/Caddyfile" ]

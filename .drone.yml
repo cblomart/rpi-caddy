@@ -3,6 +3,7 @@ build:
   commands:
     - CC=musl-gcc CCGLAGS="-static" GOOS=linux GOARCH=arm GOARM=5 go get -ldflags '-linkmode external -s -w -extldflags "-static"' -a  github.com/mholt/caddy
     - cp $(which caddy) ./
+    - upx -q --brute ./caddy
 publish:
   docker:
     username: cblomart
